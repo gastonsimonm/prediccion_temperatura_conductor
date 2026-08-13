@@ -16,28 +16,28 @@ from sklearn.metrics import r2_score
 
     # 4. Calculamos métricas y coeficientes
     y_pred = model.predict(x)
-    r2 = r2_score(y, y_pred)
+    r2 = r2_score(y, y_pred)        # El coeficiente indica que tan bien se ajusta el modelo al problema (debe ser cercano a 1)
     ordenada = model.intercept_
     coef_temp = model.coef_[0]
     coef_viento = model.coef_[1]
 
     # Mostramos los valores en pantalla
     print("\n--- RESULTADOS DEL MODELO ---")
-    print(f'Coeficiente de determinación r^2 = {r2:.4f}')
-    print(f'Ordenada al origen = {ordenada:.4f}')
-    print(f'Coef. temperatura ambiente = {coef_temp:.4f}')
-    print(f'Coef. velocidad del viento = {coef_viento:.4f}')
+    print(f'Coeficiente de determinación r^2 = {r2}')             
+    print(f'Ordenada al origen = {ordenada}')
+    print(f'Coef. temperatura ambiente = {coef_temp}')
+    print(f'Coef. velocidad del viento = {coef_viento}')
     
-    print("\n--- ECUACIÓN ---")
-    print(f'T_conductor = {ordenada:.4f} + ({coef_temp:.4f} * T_ambiente) + ({coef_viento:.4f} * V_viento)')
+    print("ECUACIÓN")
+    print(f'T_conductor = {ordenada} + ({coef_temp} * T_ambiente) + ({coef_viento:} * V_viento)')
 
-    # 5. Predicción interactiva
+    # 5. Ingresamos valor de la Velocidad del Viento y Temperatura Ambiente
     print("\n--- PREDICCIÓN TEMPERATURA DEL CONDUCTOR ---")
     try:
         v_viento = float(input('Ingrese la velocidad del viento (m/s): '))
         t_ambiente = float(input('Ingrese la temperatura ambiente (°C): '))
         t_conductor = ordenada + (coef_temp * t_ambiente) + (coef_viento * v_viento)
-        print(f'>> Temperatura del conductor estimada = {t_conductor:.2f} °C')
+        print(f'Temperatura del conductor estimada = {t_conductor} °C')
     except ValueError:
         print("Error: Por favor, ingrese únicamente valores numéricos.")
 
