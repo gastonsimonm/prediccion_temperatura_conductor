@@ -2,9 +2,8 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 
-def main():
+
     # 1. Cargamos los datos del archivo
-    print("Cargando datos históricos...")
     df = pd.read_csv('datos_temp.csv')
 
     # 2. Definimos variables dependientes (y) e independientes (x)
@@ -33,7 +32,7 @@ def main():
     print(f'T_conductor = {ordenada:.4f} + ({coef_temp:.4f} * T_ambiente) + ({coef_viento:.4f} * V_viento)')
 
     # 5. Predicción interactiva
-    print("\n--- CALCULADORA DE PREDICCIÓN ---")
+    print("\n--- PREDICCIÓN TEMPERATURA DEL CONDUCTOR ---")
     try:
         v_viento = float(input('Ingrese la velocidad del viento (m/s): '))
         t_ambiente = float(input('Ingrese la temperatura ambiente (°C): '))
@@ -42,5 +41,4 @@ def main():
     except ValueError:
         print("Error: Por favor, ingrese únicamente valores numéricos.")
 
-if __name__ == "__main__":
-    main()
+
